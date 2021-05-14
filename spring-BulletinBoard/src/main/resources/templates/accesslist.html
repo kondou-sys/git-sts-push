@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta chareset="UTF-8">
+ <title>AccessLog</title>
+  
+ <style>
+table {
+  border-collapse: collapse;
+}
+.col_username {width: 200px;}
+.col_datetime{width: 200px;}
+.col_action{width: 100px;}
+</style>
+</head>
+<body>
+ <h3>AccessLog</h3>
+
+ <hr>
+
+ <br>
+ 
+
+ <table border="1">
+ 
+      <tr>
+        <th class="col_username">username</th>
+        <th class="col_datetime">datetime</th>
+        <th class="col_action">action</th>
+      </tr>
+
+    <tbody>
+    <tr th:each="lists : ${lists}">
+     <td　th:text="${lists.username}"></td>
+     <td th:text="${lists.datetime}"></td>
+	 <td th:text="${lists.action}"></td>
+    </tr>
+  </tbody>
+ </table>
+ 
+  <br>
+  <hr>
+
+<form action="/list">
+    <input type="submit" value="戻る">
+</form>
+ 
+</body>
+</html>

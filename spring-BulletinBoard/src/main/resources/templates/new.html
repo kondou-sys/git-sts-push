@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新規登録</title>
+
+</head>
+<body>
+<h3>新規登録</h3>
+
+ <hr>
+ 
+  <form th:action="@{/add}"th:object="${board}"method="POST">
+  コメント新規登録：<br>
+  <textarea th:field="*{content}" name="form" rows="10" cols="100"></textarea><br>
+  <input type="submit" value="登　録">
+</form>
+
+<br>
+
+<form action="/list">
+    <input type="submit" value="戻　る" />
+</form>
+</body>
+</html>

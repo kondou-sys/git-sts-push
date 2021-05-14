@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta chareset="UTF-8">
+ <title>AWSコミュ掲示板開発</title>
+  
+ <style>
+table {
+  border-collapse: collapse;
+}
+.col_id {width: 50px;}
+.col_Createdate {width: 200px;}
+.col_content{width: 500px;}
+.col_CreateUser{width: 150px;}
+</style>
+</head>
+<body>
+ <h3>検索結果</h3>
+
+ <hr>
+ 
+ <table border="1">
+ 
+      <tr>
+        <th class="col_id">#</th>
+        <th class="col_Createdate">更新日</th>
+        <th class="col_content">コメント</th>
+        <th class="col_CreateUser">作成者</th>
+      </tr>
+
+    <tbody>
+    <tr th:each="board,stat : ${comments}" th:object="${board}">
+     <td th:text="*{id}"></td>
+     <td　th:text="*{datetime}"></td>
+	 <td th:text="*{content}"></td>
+	 <td th:text="*{crateUser}"></td>
+    </tr>
+  </tbody>
+ </table>
+ 
+  <br>
+  <hr>
+  
+  <form action="/list">
+    <input type="submit" value="戻　る" />
+</form>
+ 
+</body>
+</html>

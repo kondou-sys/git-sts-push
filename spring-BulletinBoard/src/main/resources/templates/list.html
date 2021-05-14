@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta chareset="UTF-8">
+ <title>AWSコミュ掲示板開発</title>
+  
+ <style>
+table {
+  border-collapse: collapse;
+}
+.col_id {width: 30px;}
+.col_Createdate {width: 200px;}
+.col_content{width: 500px;}
+.col_CreateUser{width: 150px;}
+</style>
+</head>
+<body>
+ <h3>AWSコミュ掲示板開発</h3>
+
+ <hr>
+
+      <form method="post"  th:action="@{/search}">
+        <input type="text" name="searchtext" th:value="${value}" size="20"/>
+        <input type="submit" value="検索"/>
+      </form>
+ 
+ <br>
+
+
+ <table border="1">
+ 
+      <tr>
+        <th class="col_Createdate">更新日</th>
+        <th class="col_content">コメント</th>
+        <th class="col_CreateUser">作成者</th>
+         <th class="col_id"></th>
+         <th class="col_id"></th>
+      </tr>
+
+    <tbody>
+    <tr th:each="board,stat : ${comments}" th:object="${board}">
+     <td　th:text="*{datetime}"></td>
+	 <td th:text="*{content}"></td>
+	 <td th:text="*{crateUser}"></td>
+       <td>
+	        <form th:action="@{/edit/{id}(id=*{id})}" method="GET">
+                <input type="submit" value="編集">
+            </form>
+       </td>
+       <td>
+            <form th:action="@{/delete/{id}(id=*{id})}" method="GET">
+                <input type="submit" value="削除">
+            </form>
+      </td>
+    </tr>
+  </tbody>
+ </table>
+ 
+  <br>
+  <hr>
+  
+ <form action="/add">
+    <input type="submit" value="新規追加">
+</form>
+
+<br>
+
+ <form action="/accesslist">
+    <input type="submit" value="アクセスログ">
+</form>
+
+<br>
+
+ <form action="/logout">
+    <input type="submit" value="ログアウト">
+</form>
+ 
+</body>
+</html>
